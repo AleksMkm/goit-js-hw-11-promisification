@@ -28,8 +28,6 @@ const makeTransactionNew = transaction => {
 
       if (canProcess) {
         resolve([transaction.id, delay]);
-        console.log(transaction.id);
-        console.log(delay);
       } else {
         reject(transaction.id);
       }
