@@ -11,11 +11,29 @@
       crossorigin="anonymous"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
       rel="stylesheet"
     />
   </head>
   <body>
+    <div class="task">
+      <h2 class="header">Задание 1</h2>
+      <p class="desc">
+        Напиши функцию delay(ms), которая возвращает промис, переходящий в
+        состояние "resolved" через ms миллисекунд. <br />
+        Значением исполнившегося промиса должно быть то кол - во миллисекунд
+        которое передали во время вызова функции delay.
+      </p>
+      <div class="wrapper-ms">
+        <p class="text-ms">Введите задержку, ms</p>
+        <input type="text" class="input-ms" />
+        <button class="btn-ms">Пуск!</button>
+        <p class="text-ms">
+          Результат выполнения: Выполнено через
+          <span class="time-ms">0000</span> ms
+        </p>
+      </div>
+    </div>
     <script src="./index.js"></script>
   </body>
 </html>
