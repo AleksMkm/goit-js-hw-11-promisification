@@ -194,7 +194,7 @@ module.hot.accept(reloadCSS);
 // Напиши функцию delay(ms), которая возвращает промис, переходящий в состояние "resolved" через ms миллисекунд.
 // Значением исполнившегося промиса должно быть то кол - во миллисекунд которое передали во время вызова функции delay.
 var delay = function delay(ms) {
-  return new Promise(function (resolve, reject) {
+  return new Promise(function (resolve) {
     setTimeout(function () {
       resolve("".concat(ms));
     }, ms);
@@ -220,11 +220,7 @@ inputMsEl.addEventListener('blur', function (e) {
   inputValue = +e.target.value;
 });
 btnEl.addEventListener('click', function () {
-  new Promise(function (resolve, reject) {
-    setTimeout(function () {
-      resolve(inputValue);
-    }, inputValue);
-  }).then(function (value) {
+  delay(inputValue).then(function (value) {
     return delayTimeEl.textContent = value;
   });
 });
@@ -265,15 +261,9 @@ var logger = function logger(updatedUsers) {
 // toggleUserState(users, 'Mango', logger);
 // toggleUserState(users, 'Lux', logger);
 
-/*
- * Должно работать так
- */
-// toggleUserState(users, 'Mango').then(logger);
-// toggleUserState(users, 'Lux').then(logger);
-
 
 var toggleUserStateNew = function toggleUserStateNew(allUsers, userName) {
-  return new Promise(function (resolve, reject) {
+  return new Promise(function (resolve) {
     resolve(allUsers.map(function (user) {
       return user.name === userName ? _objectSpread(_objectSpread({}, user), {}, {
         active: !user.active
@@ -281,6 +271,10 @@ var toggleUserStateNew = function toggleUserStateNew(allUsers, userName) {
     }));
   });
 };
+/*
+ * Должно работать так
+ */
+
 
 toggleUserStateNew(users, 'Mango').then(logger);
 toggleUserStateNew(users, 'Lux').then(logger);
@@ -321,8 +315,8 @@ var makeTransactionNew = function makeTransactionNew(transaction) {
 // };
 
 
-var logSuccess = function logSuccess(id) {
-  console.log("Transaction ".concat(id[0], " processed in ").concat(id[1], " ms"));
+var logSuccess = function logSuccess(arr) {
+  console.log("Transaction ".concat(arr[0], " processed in ").concat(arr[1], " ms"));
 };
 
 var logError = function logError(id) {
@@ -342,20 +336,16 @@ var logError = function logError(id) {
 
 
 makeTransactionNew({
-  id: 70,
-  amount: 150
+  id: 70
 }).then(logSuccess).catch(logError);
 makeTransactionNew({
-  id: 71,
-  amount: 230
+  id: 71
 }).then(logSuccess).catch(logError);
 makeTransactionNew({
-  id: 72,
-  amount: 75
+  id: 72
 }).then(logSuccess).catch(logError);
 makeTransactionNew({
-  id: 73,
-  amount: 100
+  id: 73
 }).then(logSuccess).catch(logError);
 },{}],"index.js":[function(require,module,exports) {
 "use strict";
@@ -395,7 +385,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53932" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50029" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
