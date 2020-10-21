@@ -25,14 +25,8 @@ const logger = updatedUsers => console.table(updatedUsers);
 // toggleUserState(users, 'Mango', logger);
 // toggleUserState(users, 'Lux', logger);
 
-/*
- * Должно работать так
- */
-// toggleUserState(users, 'Mango').then(logger);
-// toggleUserState(users, 'Lux').then(logger);
-
 const toggleUserStateNew = (allUsers, userName) => {
-  return new Promise((resolve, reject) => {
+  return new Promise(resolve => {
     resolve(
       allUsers.map(user =>
         user.name === userName ? { ...user, active: !user.active } : user,
@@ -41,5 +35,8 @@ const toggleUserStateNew = (allUsers, userName) => {
   });
 };
 
+/*
+ * Должно работать так
+ */
 toggleUserStateNew(users, 'Mango').then(logger);
 toggleUserStateNew(users, 'Lux').then(logger);

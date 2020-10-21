@@ -39,8 +39,8 @@ const makeTransactionNew = transaction => {
 //   console.log(`Transaction ${id} processed in ${time}ms`);
 // };
 
-const logSuccess = id => {
-  console.log(`Transaction ${id[0]} processed in ${id[1]} ms`);
+const logSuccess = arr => {
+  console.log(`Transaction ${arr[0]} processed in ${arr[1]} ms`);
 };
 
 const logError = id => {
@@ -57,7 +57,7 @@ const logError = id => {
 /*
  * Должно работать так
  */
-makeTransactionNew({ id: 70, amount: 150 }).then(logSuccess).catch(logError);
-makeTransactionNew({ id: 71, amount: 230 }).then(logSuccess).catch(logError);
-makeTransactionNew({ id: 72, amount: 75 }).then(logSuccess).catch(logError);
-makeTransactionNew({ id: 73, amount: 100 }).then(logSuccess).catch(logError);
+makeTransactionNew({ id: 70 }).then(logSuccess).catch(logError);
+makeTransactionNew({ id: 71 }).then(logSuccess).catch(logError);
+makeTransactionNew({ id: 72 }).then(logSuccess).catch(logError);
+makeTransactionNew({ id: 73 }).then(logSuccess).catch(logError);

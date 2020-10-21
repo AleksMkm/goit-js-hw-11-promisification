@@ -3,7 +3,7 @@
 // Значением исполнившегося промиса должно быть то кол - во миллисекунд которое передали во время вызова функции delay.
 
 const delay = ms => {
-  return new Promise((resolve, reject) => {
+  return new Promise(resolve => {
     setTimeout(() => {
       resolve(`${ms}`);
     }, ms);
@@ -28,9 +28,5 @@ inputMsEl.addEventListener('blur', e => {
 });
 
 btnEl.addEventListener('click', () => {
-  new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve(inputValue);
-    }, inputValue);
-  }).then(value => (delayTimeEl.textContent = value));
+  delay(inputValue).then(value => (delayTimeEl.textContent = value));
 });
